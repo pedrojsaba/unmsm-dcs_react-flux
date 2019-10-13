@@ -17,13 +17,9 @@ function ProfessorName(props) {
   }
 
   function getName(professorId) {
-    console.log('professors', professors);
     var p = professors.filter(f => f.id === professorId);
-    console.log('p', p);
-    if (p.length > 0) {
-      return p[0].name;
-    }
-
+    if (p.length > 0) return p[0].name;
+    return 'Not Found';
   }
 
   return (
