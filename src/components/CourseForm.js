@@ -1,6 +1,7 @@
 import React from "react";
 import TextInput from "./common/TextInput";
 import PropTypes from "prop-types";
+import ProfessorList from "./ProfessorList";
 
 function CourseForm(props) {
   return (
@@ -16,17 +17,7 @@ function CourseForm(props) {
       <div className="form-group">
         <label htmlFor="author">Professor</label>
         <div className="field">
-          <select
-            id="professor"
-            name="professorId"
-            onChange={props.onChange}
-            className="form-control"
-            value={props.course.professorId || ""}
-          >
-            <option value="" />
-            <option value="1">Efrain Bautista</option>
-            <option value="2">Nora La Serna</option>
-          </select>
+          <ProfessorList course={props.course} onChange={props.onChange}></ProfessorList>          
         </div>
         {props.errors.professorId && (
           <div className="alert alert-danger">{props.errors.professorId}</div>

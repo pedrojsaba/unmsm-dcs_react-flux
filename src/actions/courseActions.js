@@ -1,5 +1,6 @@
 import dispatcher from "../appDispatcher";
 import * as courseApi from "../api/courseApi";
+import * as professorApi from "../api/professorApi";
 import actionTypes from "./actionTypes";
 
 export function saveCourse(course) {
@@ -19,6 +20,15 @@ export function loadCourses() {
     dispatcher.dispatch({
       actionType: actionTypes.LOAD_COURSES,
       courses: courses
+    });
+  });
+}
+
+export function loadProfessors() {
+  return professorApi.getProfessors().then(professors => {
+    dispatcher.dispatch({
+      actionType: actionTypes.LOAD_PROFESSORS,
+      professors: professors
     });
   });
 }
