@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import ProfessorName from "./ProfessorName";
 
 function CourseList(props) {
   return (
@@ -9,7 +10,7 @@ function CourseList(props) {
         <tr>
           <th>&nbsp;</th>
           <th>Title</th>
-          <th>Professor ID</th>
+          <th>Professor Name</th>
           <th>Category</th>
         </tr>
       </thead>
@@ -31,7 +32,7 @@ function CourseList(props) {
               <td>
                 <Link to={"/course/" + course.slug}>{course.title}</Link>
               </td>
-              <td>{course.professorId}</td>
+              <td><ProfessorName professorId={course.professorId}></ProfessorName></td>
               <td>{course.category}</td>
             </tr>
           );

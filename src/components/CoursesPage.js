@@ -20,7 +20,7 @@ function CoursesPage() {
 
   return (
     <><h2>Courses</h2>
-      <Link className="btn btn-primary" to="/course">
+      <Link className="btn btn-primary mb-3" to="/course">
         Add Course
       </Link>
       <CourseList courses={courses} deleteCourse={deleteCourse} />
