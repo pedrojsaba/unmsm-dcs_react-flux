@@ -2,6 +2,8 @@ import dispatcher from "../appDispatcher";
 import * as courseApi from "../api/courseApi";
 import * as professorApi from "../api/professorApi";
 import actionTypes from "./actionTypes";
+import swal from 'sweetalert';
+import { toast } from "react-toastify";
 
 export function saveCourse(course) {
   return courseApi.saveCourse(course).then(savedCourse => {
@@ -34,13 +36,25 @@ export function loadProfessors() {
 }
 
 export function deleteCourse(id) {
-  //debugger;
-  if (!window.confirm('sure?')) return;
-
-  return courseApi.deleteCourse(id).then(() => {
-    dispatcher.dispatch({
-      actionType: actionTypes.DELETE_COURSE,
-      id: id
-    });
+  //debugger;  
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover this course!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+      toast.success("Course deleted.");
+      return courseApi.deleteCourse(id).then(() => {
+        dispatcher.dispatch({
+          actionType: actionTypes.DELETE_COURSE,
+          id: id
+        });
+      });    
+    } else {
+      toast.success("Your course is safe!");
+    }
   });
 }
