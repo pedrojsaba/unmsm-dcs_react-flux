@@ -32,7 +32,7 @@ function CourseList(props) {
               <td>
                 <Link to={"/course/" + course.slug}>{course.title}</Link>
               </td>
-              <td><ProfessorName professorId={course.professorId}></ProfessorName></td>
+              <td><ProfessorName professorId={course.professorId} professors={props.professors}></ProfessorName></td>
               <td>{course.category}</td>
             </tr>
           );
